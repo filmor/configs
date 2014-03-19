@@ -12,8 +12,9 @@ Install:
     modern mysql installs
 
 Install FreeTDS from source:
-    Download or wget the source (see Ben's email).
-    Run ./configure in the extracted dir.
+    See LocalInstall.md in Eestuarial.
+    Download the source.
+    Run ./configure in the extracted dir, with options.
     Run make -j4
     Run sudo make install.
     Verify that the driver .so file is in the correct
