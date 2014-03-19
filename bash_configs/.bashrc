@@ -123,20 +123,16 @@ alias conda='/home/ely/anaconda/bin/conda'
 alias anaconda='/home/ely/anaconda/bin/python'
 alias anaconda-ipython='/home/ely/anaconda/bin/ipython'
 
-alias make_estuarial='rm -rf /home/ely/anaconda/envs/trqad/lib/python2.7/site-packages/estuarial; python setup.py install;'
+alias make_estuarial='rm -rf /home/ely/anaconda/envs/estuarial-dev/lib/python2.7/site-packages/estuarial; python setup.py install;'
 
 alias make_kag='rm -rf /home/ely/programming/kagsketball/build/ /home/ely/programming/kagsketball/dist/ /home/ely/anaconda/envs/kagsketball/lib/python2.7/site-packages/kagsketball*; cp /home/ely/programming/kagsketball/src/* /home/ely/programming/kagsketball/kagsketball/src/; cp /home/ely/programming/kagsketball/raw_data/* /home/ely/programming/kagsketball/kagsketball/raw_data/; python /home/ely/programming/kagsketball/setup.py install'
-
 
 
 # Exports and system path configs
 export PATH=/home/ely/anaconda/bin/:$PATH
 export PATH=/home/ely/.emacs.d:$PATH
 
+# Personal projects not built as packages.
 export PYTHONPATH=/home/ely/pycon:$PYTHONPATH
 export PYTHONPATH=/home/ely/programming/lsw/lsw:$PYTHONPATH
 export PYTHONPATH=/home/ely/software/python-twitter/python-twitter-1.1/:$PYTHONPATH
-export PYTHONPATH=/home/ely/programming/:$PYTHONPATH
-export PYTHONPATH=/home/ely/programming/feldman/feldman/:$PYTHONPATH
-export PYTHONPATH=/home/ely/programming/ArrayManagement/ArrayManagement/:$PYTHONPATH
-export PYTHONPATH=/home/ely/programming/ArrayManagement/ArrayManagement/arraymanagement/:$PYTHONPATH
