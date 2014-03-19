@@ -12,7 +12,12 @@ Install:
     modern mysql installs
 
 Install FreeTDS from source:
-    
+    Download or wget the source (see Ben's email).
+    Run ./configure in the extracted dir.
+    Run make -j4
+    Run sudo make install.
+    Verify that the driver .so file is in the correct
+        path for estuarial / TR VPN.
 
 Ensure that /.ssh/config is correct (and points to configs/)
 
