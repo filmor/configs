@@ -1,0 +1,35 @@
+Manually migrate ssh_configs.
+Install git and retrieve other configs from public git repo.
+Ensure that bashrc, emacs, IPython, etc., have configs.
+
+Install:
+    mercurial
+    emacs-24
+    chromium
+    firefox / tab-mix / ad-block
+    anaconda / conda
+    unixodbc-dev
+    modern mysql installs
+
+Install FreeTDS from source:
+    
+
+Ensure that /.ssh/config is correct (and points to configs/)
+
+Clone needed Continuum repos:
+    git clone git@github.com:ContinuumIO/estuarial
+    git clone git@github.com:ContinuumIO/bokeh.git
+    git clone git@github.com:ContinuumIO/numbapro.git
+    git clone git@github.com:ContinuumIO/libdynd.git
+    git clone git@github.com:ContinuumIO/dynd-python.git
+    git clone git@github.com:ContinuumIO/blaze.git
+    git clone git@github.com:ContinuumIO/datashape.git
+    git clone git@github.com:ContinuumIO/presentations.git
+    git clone git@github.com:ContinuumIO/ArrayManagement.git	
+    git clone git@github.com:ContinuumIO/iopro.git
+    git clone git@github.com:ContinuumIO/numpy.git
+    git clone git@github.com:ContinuumIO/pycosat.git
+    git clone git@github.com:ContinuumIO/numbapro-examples.git
+    git clone git@github.com:ContinuumIO/ipython.git
+    git clone git@github.com:ContinuumIO/PyTables.git
+    
