@@ -12,7 +12,7 @@ Install:
     modern mysql installs
 
 Install FreeTDS from source:
-    See LocalInstall.md in Eestuarial.
+    See LocalSetup.md in Eestuarial.
     Download the source.
     Run ./configure in the extracted dir, with options.
     Run make -j4
