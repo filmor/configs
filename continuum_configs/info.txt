@@ -38,4 +38,9 @@ Clone needed Continuum repos:
     git clone git@github.com:ContinuumIO/numbapro-examples.git
     git clone git@github.com:ContinuumIO/ipython.git
     git clone git@github.com:ContinuumIO/PyTables.git
+
+Installing Estuarial:
+    Create some conda environment.
+    Install ArrayManagement.
+    
     
