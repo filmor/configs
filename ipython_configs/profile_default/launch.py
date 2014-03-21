@@ -355,9 +355,33 @@ class Timer(object):
             print ("Block {} elpased time: {}".format(self.name, 
                                                      self.elapsed_time))
 
+# An example for making a method factory that breaks scope,
+# so that local variables become bound.
+""" Toy Example.
 
-
-
+    some_dict = {}
+    for i in range(2):
+        def factory(arg):
+            def fun(self, *args):
+                print "{}".format(arg)
+            return fun
+        fun = factory(i)
+        fun.__doc__ = "I am function {}".format(i)
+        fun.__name__ = "function_{}".format(i)
+        some_dict["function_{}".format(i)] = fun
+    
+    my_type = type("my_type", (object,), some_dict)
+    m = my_type()
+    
+    print id(m.function_0)
+    print id(m.function_1)
+    print m.function_0.__doc__
+    print m.function_1.__doc__
+    print m.function_0.__name__
+    print m.function_1.__name__
+    m.function_0()
+    m.function_1()
+"""  
 
 ###############################
 # Data and instance utilities #
