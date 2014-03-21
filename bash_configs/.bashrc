@@ -131,6 +131,9 @@ alias make_kag='rm -rf /home/ely/programming/kagsketball/build/ /home/ely/progra
 
 
 # Exports and system path configs
+export EDITOR=emacs
+export GIT_EDITOR=emacs
+
 export PATH=/home/ely/anaconda/bin/:$PATH
 export PATH=/home/ely/.emacs.d:$PATH
 
