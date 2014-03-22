@@ -95,6 +95,18 @@
 ;; Bind above function to "Ctrl-x 4 t" to toggle.
 (define-key ctl-x-4-map "t" 'toggle-window-split)
 
+;; Custom function to perform C-l twice
+;; bound to M-x home. Used the following to obtain it:
+;; 1. define the kbd macro using C-x (, then C-l C-l, then C-x )
+;; 2. name the most recent macro with C-x C-k n name. In this
+;;        case name is "home".
+;; 3. Produce code into the current buffer for the macro, with:
+;;        M-x insert-kbd-macro <RET> name <RET>
+(fset 'home
+   (lambda (&optional arg) "Flush cursor to top of buffer screen." 
+       (interactive "p") 
+       (kmacro-exec-ring-item (quote ("" 0 "%d")) arg)))    
+
 ;; Swap buffers into different windows
 (defun swap-buffer ()
   (interactive)
