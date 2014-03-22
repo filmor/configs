@@ -29,6 +29,13 @@
 ;;(require 'column-enforce-mode)
 ;;(add-hook 'python-mode-hook 'column-enforce-mode)
 
+;;;;;;;;;;;;;
+;; Aliases ;;
+;;;;;;;;;;;;;
+(defalias 'yes-or-no-p 'y-or-n-p)
+(defalias 'rb 'revert-buffer)
+(defalias 'qr 'query-replace)
+
 ;;;;;;;;;;;
 ;; Modes ;;
 ;;;;;;;;;;;
