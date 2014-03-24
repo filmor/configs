@@ -29,6 +29,9 @@
 ;;(require 'column-enforce-mode)
 ;;(add-hook 'python-mode-hook 'column-enforce-mode)
 
+;; Use spaces instead of tab characters.
+(setq-default indent-tabs-mode nil)
+
 ;;;;;;;;;;;;;
 ;; Aliases ;;
 ;;;;;;;;;;;;;
