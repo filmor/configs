@@ -131,6 +131,21 @@ def ensure_return_type(permissible_types):
         return wrapper
     return decorator
 
+def target_getitem(function_name):
+    """
+    Endow a class with the property that calls to `__getitem__` will mirror the
+    arguments into the class's function named 'function_name'. Optionally add
+    an extra argument, api_mapper, which first sanitizes the arguments from
+    `__getitem__` and then passes them on to the function.
+    """
+    def decorator(klass):
+        def __getitem__(self, args):
+            args = args if isinstance(args, tuple) else (args,) # For 1-D index
+            return getattr(klass, function_name)(*args)
+        klass.__getitem__ = __getitem__
+        return klass
+    return decorator
+
 def fn_unique(lst, cmp_op=operator.ne):
     """
     Creates an order-preserving new list from an input list, such that only
@@ -354,34 +369,6 @@ class Timer(object):
         if self.verbose:
             print ("Block {} elpased time: {}".format(self.name, 
                                                      self.elapsed_time))
-
-# An example for making a method factory that breaks scope,
-# so that local variables become bound.
-""" Toy Example.
-
-    some_dict = {}
-    for i in range(2):
-        def factory(arg):
-            def fun(self, *args):
-                print "{}".format(arg)
-            return fun
-        fun = factory(i)
-        fun.__doc__ = "I am function {}".format(i)
-        fun.__name__ = "function_{}".format(i)
-        some_dict["function_{}".format(i)] = fun
-    
-    my_type = type("my_type", (object,), some_dict)
-    m = my_type()
-    
-    print id(m.function_0)
-    print id(m.function_1)
-    print m.function_0.__doc__
-    print m.function_1.__doc__
-    print m.function_0.__name__
-    print m.function_1.__name__
-    m.function_0()
-    m.function_1()
-"""  
 
 ###############################
 # Data and instance utilities #

@@ -272,3 +272,5 @@
  '(column-number-mode t)
  '(show-paren-mode t)
  '(tool-bar-mode nil))
+(put 'downcase-region 'disabled nil)
+(put 'upcase-region 'disabled nil)
