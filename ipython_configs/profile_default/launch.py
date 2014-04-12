@@ -141,7 +141,7 @@ def target_getitem(function_name):
     def decorator(klass):
         def __getitem__(self, args):
             args = args if isinstance(args, tuple) else (args,) # For 1-D index
-            return getattr(klass, function_name)(*args)
+            return getattr(self, function_name)(*args)
         klass.__getitem__ = __getitem__
         return klass
     return decorator

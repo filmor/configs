@@ -1,8 +1,11 @@
 # Configuration file for ipython.
+from os.path import join as pjoin
+from IPython.utils.path import get_ipython_dir
 
 c = get_config()
 c.InteractiveShellApp.exec_files = [
-    '/home/ely/.config/ipython/profile_default/launch.py']
+    pjoin(get_ipython_dir(), "profile_default", "launch.py")
+]
 
 #------------------------------------------------------------------------------
 # InteractiveShellApp configuration
