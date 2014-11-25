@@ -123,6 +123,9 @@ alias home='clear;'
 # Alias Homebrew's install of emacs
 alias emacs='open -a /usr/local/Cellar/emacs/24.4/Emacs.app'
 
+# Alias Skim for quick PDF viewing
+alias skim='open -a /Users/ely_spears/Applications/Skim.app/Contents/MacOS/Skim'
+
 # Exports and system path configs
 export EDITOR=emacs
 export GIT_EDITOR=emacs
@@ -130,7 +133,7 @@ export GIT_EDITOR=emacs
 # added by Anaconda 2.1.0 installer
 export PATH="/Users/ely_spears/anaconda/bin:$PATH"
 
-export PATH=/home/ely/.emacs.d:$PATH
+export PATH="/home/ely/.emacs.d:$PATH"
 
 
 
