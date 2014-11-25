@@ -123,12 +123,11 @@ alias conda='/home/ely/anaconda/bin/conda'
 alias anaconda='/home/ely/anaconda/bin/python'
 alias anaconda-ipython='/home/ely/anaconda/bin/ipython'
 
-alias make_estuarial='rm -rf /home/ely/anaconda/envs/estuarial-dev/lib/python2.7/site-packages/estuarial*; python setup.py install;'
+alias make_numba='source activate numbda-dev; rm -rf /home/ely/anaconda/envs/numba-dev/lib/python2.7/site-packages/numbapro*; python setup.py install;'
 
-alias make_arraymanagement='rm -rf /home/ely/anaconda/envs/estuarial-dev/lib/python2.7/site-packages/arraymanagement*; python setup.py install;'
+alias make_estuarial='source activate estuarial-dev; rm -rf /home/ely/anaconda/envs/estuarial-dev/lib/python2.7/site-packages/estuarial*; python setup.py install;'
 
-alias make_kag='rm -rf /home/ely/programming/kagsketball/build/ /home/ely/programming/kagsketball/dist/ /home/ely/anaconda/envs/kagsketball/lib/python2.7/site-packages/kagsketball*; cp /home/ely/programming/kagsketball/src/* /home/ely/programming/kagsketball/kagsketball/src/; cp /home/ely/programming/kagsketball/raw_data/* /home/ely/programming/kagsketball/kagsketball/raw_data/; python /home/ely/programming/kagsketball/setup.py install'
-
+alias make_arraymanagement='source activate estuarial-dev; rm -rf /home/ely/anaconda/envs/estuarial-dev/lib/python2.7/site-packages/arraymanagement*; python setup.py install;'
 
 # Exports and system path configs
 export EDITOR=emacs
