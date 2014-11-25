@@ -28,11 +28,14 @@ import scipy as sp
 import scipy.stats as st
 import scipy.weave as weave
 import multiprocessing as mp
+from IPython.core.magic import (
+    Magics,
+    register_line_magic,
+    register_cell_magic,
+    register_line_cell_magic
+)
 from dateutil.relativedelta import relativedelta as drr
-from IPython.core.magic import (Magics,
-                                register_line_magic,
-                                register_cell_magic,
-                                register_line_cell_magic)
+
 
 ###########################
 # Pickle/Unpickle methods #
