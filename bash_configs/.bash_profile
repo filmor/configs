@@ -126,8 +126,11 @@ alias emacs='open -a /usr/local/Cellar/emacs/24.4/Emacs.app'
 # Alias Skim for quick PDF viewing
 alias skim='open -a /Users/ely_spears/Applications/Skim.app/Contents/MacOS/Skim'
 
-# Aliad Mou for quick Markdown viewing
+# Alias Mou for quick Markdown viewing
 alias mou='open -a /Users/ely_spears/Applications/Mou.app'
+
+# Alias MacTex install of pdflatex
+alias pdflatex='/usr/texbin/pdflatex'
 
 # Exports and system path configs
 export EDITOR=emacs
