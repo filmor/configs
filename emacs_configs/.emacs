@@ -50,6 +50,9 @@
 ;; Turn on overwrite/selection delete mode.
 (delete-selection-mode t)
 
+;; Turn on standard line wrapping:
+(global-visual-line-mode t)
+
 ;; Enable visual feedback on selections
 ;; (setq transient-mark-mode t))
 
