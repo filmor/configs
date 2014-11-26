@@ -16,10 +16,10 @@
 (load-theme 'tango-dark)
 
 ;; Set font
-(set-frame-font "Courier 10 Pitch-12" nil t)
-(set-default-font "Courier 10 Pitch-12")
+(set-frame-font "Courier 10 Pitch-18" nil t)
+(set-default-font "Courier 10 Pitch-18")
 (defun fontify-frame (frame)
-  (set-frame-parameter frame 'font "Courier 10 Pitch-12"))
+  (set-frame-parameter frame 'font "Courier 10 Pitch-18"))
 ;; Fontify current frame
 (fontify-frame nil)
 ;; Fontify any future frames
@@ -97,6 +97,16 @@
 
 ;; Bind above function to "Ctrl-x 4 t" to toggle.
 (define-key ctl-x-4-map "t" 'toggle-window-split)
+
+;; Alter size of a window in 2-window mode, will make the in-focus
+;; window extend to take up half of the other's lines.
+(defun halve-other-window-height ()
+  "Expand current window to use half of the other window's lines."
+  (interactive)
+  (enlarge-window (/ (window-height (next-window)) 2)))
+
+;; Bind above function to C-c v
+(global-set-key (kbd "C-c v") 'halve-other-window-height)
 
 ;; Custom function to perform C-l twice
 ;; bound to M-x home. Used the following to obtain it:

@@ -93,14 +93,6 @@ alias l='ls -CF'
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -112,6 +104,7 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
 
 ##################
 # Customizations #
@@ -139,7 +132,24 @@ export GIT_EDITOR=emacs
 # added by Anaconda 2.1.0 installer
 export PATH="/Users/ely_spears/anaconda/bin:$PATH"
 
+# Putting emacs downloads on the path.
 export PATH="/home/ely/.emacs.d:$PATH"
+
+# Paths for Neko install needed by Flow
+export NEKOPATH=$HOME/neko
+export PATH=$NEKOPATH:$PATH
+
+# Paths for Haxe install needed by Flow
+export HAXEPATH=$HOME/haxe
+export HAXE_LIBRARY_PATH=$HAXEPATH/std
+export PATH=$HAXEPATH:$PATH
+export DYLD_LIBRARY_PATH=$NEKOPATH:$DYLD_LIBRARY_PATH
+
+# Paths for Flow itself
+export WORKSPACE=$HOME/workspace
+export LEARNSMART=$WORKSPACE/learnsmart
+export FLOW=$LEARNSMART/flow
+export PATH=$FLOW/bin:$PATH
 
 
 
