@@ -12,6 +12,9 @@
 (add-hook 'python-mode-hook 'jedi:setup)
 (setq jedi:complete-on-dot t)
 
+;; Require Emacs IPython Notebook
+(require 'ein)
+
 ;; Set color theme
 (load-theme 'tango-dark)
 
@@ -29,8 +32,16 @@
 ;;(require 'column-enforce-mode)
 ;;(add-hook 'python-mode-hook 'column-enforce-mode)
 
-;; Use spaces instead of tab characters.
+;; Use spaces instead of tab characters, and
+;; use 4 spaces as default for tab.
+(setq default-tab-width 4)
 (setq-default indent-tabs-mode nil)
+
+;; Open .flow files in C-mode and make C-mode use 4 spaces
+;; for its native indentations.
+(setq auto-mode-alist
+      (cons '("\\.flow$" . c-mode) auto-mode-alist))
+(setq-default c-basic-offset 4)
 
 ;;;;;;;;;;;;;
 ;; Aliases ;;
@@ -136,7 +147,8 @@
            ;;(other-window 1)))))
 
 ;; Bind the above function to Ctrl-x c
-(define-key ctl-x-map "c" 'swap-buffer)
+(global-set-key (kbd "C-x c") 'swap-buffer)
+;;(define-key ctl-x-map "c" 'swap-buffer)
 
 ;; Set buffer console to always show current system name
 ;; and the whole file path of the buffer being edited.
