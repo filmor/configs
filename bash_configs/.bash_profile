@@ -125,6 +125,14 @@ alias mou='open -a /Users/ely_spears/Applications/Mou.app'
 # Alias MacTex install of pdflatex
 alias pdflatex='/usr/texbin/pdflatex'
 
+# Helper aliases for quick cd to workspaces
+alias cdworkspace='cd $WORKSPACE'
+alias cdlearnsmart='cd $LEARNSMART'
+alias cdflow='cd $FLOW'
+alias cdflowlib='cd $FLOWLIB'
+alias cdconfigs='cd $HOME/configs'
+alias cdflowwww='cd $FLOWWWW'
+
 # Exports and system path configs
 export EDITOR=emacs
 export GIT_EDITOR=emacs
@@ -145,14 +153,50 @@ export HAXE_LIBRARY_PATH=$HAXEPATH/std
 export PATH=$HAXEPATH:$PATH
 export DYLD_LIBRARY_PATH=$NEKOPATH:$DYLD_LIBRARY_PATH
 
-# Paths for Flow itself
+# Paths for Flow libraries
 export WORKSPACE=$HOME/workspace
 export LEARNSMART=$WORKSPACE/learnsmart
 export FLOW=$LEARNSMART/flow
+export FLOWLIB=$FLOW/lib
+export FLOWWWW=$FLOW/www
 export PATH=$FLOW/bin:$PATH
 
 
+####################
+# Helper functions #
+####################
 
+# Custom man pages for these are sym linked in /usr/local/share/man/man1
+# which points to scratch/creating_man_pages for the version controlled
+# source.
+
+function searchHere() {
+    if [ "$#" -gt 1 ]; then
+        grep -ir "$1" $PWD --include "$2"
+    else
+        grep -ir "$1" $PWD
+    fi
+}
+
+function flowLibSearch() {
+    grep -ir "$1" ${FLOWLIB} --include "*.flow"
+}
+
+function jsLaunch() {
+    cp "$1" $FLOWWWW;
+    pushd $FLOWWWW;
+    ((python -m SimpleHTTPServer) &);
+    open http://localhost:8000/flowjs.html?name="${1%%.*}";
+    popd;
+}
+
+function swfLaunch() {
+    cp "$1" $FLOWWWW;
+    pushd $FLOWWWW;
+    ((python -m SimpleHTTPServer) &);
+    open http://localhost:8000/flowswf.html?name="${1%%.*}";
+    popd;
+}
 
 
 
