@@ -122,6 +122,9 @@ alias skim='open -a /Users/ely_spears/Applications/Skim.app/Contents/MacOS/Skim'
 # Alias Mou for quick Markdown viewing
 alias mou='open -a /Users/ely_spears/Applications/Mou.app'
 
+# Alias for skype
+alias skype='open -a /Users/ely_spears/Applications/Skype.app'
+
 # Alias MacTex install of pdflatex
 alias pdflatex='/usr/texbin/pdflatex'
 
