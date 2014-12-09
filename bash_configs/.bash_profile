@@ -128,6 +128,9 @@ alias skype='open -a /Users/ely_spears/Applications/Skype.app'
 # Alias MacTex install of pdflatex
 alias pdflatex='/usr/texbin/pdflatex'
 
+# Alias for Mnemosyne program
+alias mnemosyne='open -a /Applications/Mnemosyne.app'
+
 # Helper aliases for quick cd to workspaces
 alias cdworkspace='cd $WORKSPACE'
 alias cdlearnsmart='cd $LEARNSMART'
@@ -168,6 +171,8 @@ export PATH=$FLOW/bin:$PATH
 ####################
 # Helper functions #
 ####################
+
+alias killSimpleServer='pkill -9 -f SimpleHTTPServer'
 
 # Custom man pages for these are sym linked in /usr/local/share/man/man1
 # which points to scratch/creating_man_pages for the version controlled
