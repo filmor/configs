@@ -206,6 +206,10 @@ function swfLaunch() {
     popd;
 }
 
+function flowdbg() {
+    rlwrap flowcpp --batch --debug "$1"
+}
+
 
 
 
