@@ -173,6 +173,7 @@ export PATH=$FLOW/bin:$PATH
 ####################
 
 alias killSimpleServer='pkill -9 -f SimpleHTTPServer'
+alias generatePR='hub pull-request -b master -o'
 
 # Custom man pages for these are sym linked in /usr/local/share/man/man1
 # which points to scratch/creating_man_pages for the version controlled
@@ -208,6 +209,10 @@ function swfLaunch() {
 
 function flowdbg() {
     rlwrap flowcpp --batch --debug "$1"
+}
+
+function pushNewBranch() {
+    git push -u origin "$1"
 }
 
 
