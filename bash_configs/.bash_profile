@@ -153,19 +153,23 @@ export PATH="/home/ely/.emacs.d:$PATH"
 export NEKOPATH=$HOME/neko
 export PATH=$NEKOPATH:$PATH
 
-# Paths for Haxe install needed by Flow
-export HAXEPATH=$HOME/haxe
-export HAXE_LIBRARY_PATH=$HAXEPATH/std
-export PATH=$HAXEPATH:$PATH
-export DYLD_LIBRARY_PATH=$NEKOPATH:$DYLD_LIBRARY_PATH
-
 # Paths for Flow libraries
 export WORKSPACE=$HOME/workspace
 export LEARNSMART=$WORKSPACE/learnsmart
 export FLOW=$LEARNSMART/flow
 export FLOWLIB=$FLOW/lib
+export FLOWSRC=$FLOW/src
 export FLOWWWW=$FLOW/www
 export PATH=$FLOW/bin:$PATH
+
+# Paths for Haxe install needed by Flow
+export HAXEPATH=$HOME/haxe
+export HAXEPATH=$FLOWSRC:$HAXEPATH
+export HAXE_LIBRARY_PATH=$HAXEPATH/std
+export PATH=$HAXEPATH:$PATH
+export DYLD_LIBRARY_PATH=$NEKOPATH:$DYLD_LIBRARY_PATH
+
+
 
 
 ####################
