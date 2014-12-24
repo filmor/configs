@@ -156,10 +156,12 @@ export PATH=$NEKOPATH:$PATH
 # Paths for Flow libraries
 export WORKSPACE=$HOME/workspace
 export LEARNSMART=$WORKSPACE/learnsmart
+export COPENHAGEN=$LEARNSMART/copenhagen
 export FLOW=$LEARNSMART/flow
 export FLOWLIB=$FLOW/lib
 export FLOWSRC=$FLOW/src
 export FLOWWWW=$FLOW/www
+export FLOWLINGO=$FLOWLIB/lingo
 export PATH=$FLOW/bin:$PATH
 
 # Paths for Haxe install needed by Flow
@@ -192,22 +194,34 @@ function searchHere() {
 }
 
 function flowLibSearch() {
-    grep -ir "$1" ${FLOWLIB} --include "*.flow"
+    # If --<search_loc> given, then dispatch different searches.
+    if [ "$#" -gt 1 ]; then
+        if [ "$1" == "--copenhagen" ]; then
+            grep -ir "$2" ${COPENHAGEN} --include "*.flow"
+        elif [ "$1" == "--source" ]; then
+            grep -ir "$2" ${FLOWSRC} --include "*.hx" --include "*.flow"
+        elif [ "$1" == "--lingo" ]; then
+            grep -ir "$2" ${FLOWLINGO} --include "*.lingo" --include "*.flow"
+        elif [ "$1" == "--lib" ]; then
+            grep -ir "$2" ${FLOWLIB} --include "*.flow"
+        fi
+    # Otherwise assume it is lib search.
+    else
+        grep -ir "$1" ${FLOWLIB} --include "*.flow"
+    fi
 }
 
 function jsLaunch() {
     cp "$1" $FLOWWWW;
     pushd $FLOWWWW;
-    ((python -m SimpleHTTPServer) &);
-    open http://localhost:8000/flowjs.html?name="${1%%.*}";
+    open http://localhost/flow/flowjs.html?name="${1%%.*}";
     popd;
 }
 
 function swfLaunch() {
     cp "$1" $FLOWWWW;
     pushd $FLOWWWW;
-    ((python -m SimpleHTTPServer) &);
-    open http://localhost:8000/flowswf.html?name="${1%%.*}";
+    open http://localhost/flow/flowswf.html?name="${1%%.*}";
     popd;
 }
 
