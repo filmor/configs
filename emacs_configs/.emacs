@@ -13,7 +13,7 @@
 (setq jedi:complete-on-dot t)
 
 ;; Require Emacs IPython Notebook
-(require 'ein)
+;;(require 'ein)
 
 ;; Set color theme
 (load-theme 'tango-dark)

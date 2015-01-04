@@ -119,15 +119,6 @@ fi
 
 # Custom aliases
 alias home='clear;'
-alias conda='/home/ely/anaconda/bin/conda'
-alias anaconda='/home/ely/anaconda/bin/python'
-alias anaconda-ipython='/home/ely/anaconda/bin/ipython'
-
-alias make_numba='source activate numbda-dev; rm -rf /home/ely/anaconda/envs/numba-dev/lib/python2.7/site-packages/numbapro*; python setup.py install;'
-
-alias make_estuarial='source activate estuarial-dev; rm -rf /home/ely/anaconda/envs/estuarial-dev/lib/python2.7/site-packages/estuarial*; python setup.py install;'
-
-alias make_arraymanagement='source activate estuarial-dev; rm -rf /home/ely/anaconda/envs/estuarial-dev/lib/python2.7/site-packages/arraymanagement*; python setup.py install;'
 
 # Exports and system path configs
 export EDITOR=emacs
@@ -135,8 +126,3 @@ export GIT_EDITOR=emacs
 
 export PATH=/home/ely/anaconda/bin/:$PATH
 export PATH=/home/ely/.emacs.d:$PATH
-
-# Personal projects not built as packages.
-export PYTHONPATH=/home/ely/pycon:$PYTHONPATH
-export PYTHONPATH=/home/ely/programming/lsw/lsw:$PYTHONPATH
-export PYTHONPATH=/home/ely/software/python-twitter/python-twitter-1.1/:$PYTHONPATH
