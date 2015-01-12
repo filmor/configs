@@ -146,6 +146,9 @@ export GIT_EDITOR=emacs
 # added by Anaconda 2.1.0 installer
 export PATH="/Users/ely_spears/anaconda/bin:$PATH"
 
+# for locating cabal installed software
+export PATH="/Users/ely_spears/.cabal/bin:$PATH"
+
 # Putting emacs downloads on the path.
 export PATH="/home/ely/.emacs.d:$PATH"
 

@@ -40,7 +40,7 @@
 ;; Open .flow files in C-mode and make C-mode use 4 spaces
 ;; for its native indentations.
 (setq auto-mode-alist
-      (cons '("\\.flow$" . c-mode) auto-mode-alist))
+      (cons '("\\.flow$" . javascript-mode) auto-mode-alist))
 (setq-default c-basic-offset 4)
 
 ;;;;;;;;;;;;;
