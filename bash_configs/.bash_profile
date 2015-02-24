@@ -158,7 +158,7 @@ export PATH=$NEKOPATH:$PATH
 
 # Paths for Flow libraries
 export WORKSPACE=$HOME/workspace
-export LEARNSMART=$WORKSPACE/learnsmart
+export LEARNSMART=$WORKSPACE/svn_learnsmart
 export COPENHAGEN=$LEARNSMART/copenhagen
 export FLOW=$LEARNSMART/flow
 export FLOWLIB=$FLOW/lib
