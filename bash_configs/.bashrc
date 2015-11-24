@@ -126,3 +126,4 @@ export GIT_EDITOR=emacs
 
 export PATH=/home/ely/anaconda/bin/:$PATH
 export PATH=/home/ely/.emacs.d:$PATH
+export PATH=/home/ely/.cabal/bin/:$PATH

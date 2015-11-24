@@ -3,44 +3,30 @@
 ;; Load package repositories
 (require 'package)
 (add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/package/") t)
+    '("marmalade" . "http://marmalade-repo.org/package/") t)
 (add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+    '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
-
-;; Add jedi to python-mode.
-(add-hook 'python-mode-hook 'jedi:setup)
-(setq jedi:complete-on-dot t)
-
-;; Require Emacs IPython Notebook
-;;(require 'ein)
 
 ;; Set color theme
 (load-theme 'tango-dark)
 
 ;; Set font
-(set-frame-font "Courier 10 Pitch-18" nil t)
-(set-default-font "Courier 10 Pitch-18")
+(set-frame-font "Courier 10 Pitch-12" nil t)
+(set-default-font "Courier 10 Pitch-12")
 (defun fontify-frame (frame)
-  (set-frame-parameter frame 'font "Courier 10 Pitch-18"))
+  (set-frame-parameter frame 'font "Courier 10 Pitch-12"))
 ;; Fontify current frame
 (fontify-frame nil)
 ;; Fontify any future frames
 (push 'fontify-frame after-make-frame-functions)
-
-;; Require load for column mode and set active
-;;(require 'column-enforce-mode)
-;;(add-hook 'python-mode-hook 'column-enforce-mode)
 
 ;; Use spaces instead of tab characters, and
 ;; use 4 spaces as default for tab.
 (setq default-tab-width 4)
 (setq-default indent-tabs-mode nil)
 
-;; Open .flow files in C-mode and make C-mode use 4 spaces
-;; for its native indentations.
-(setq auto-mode-alist
-      (cons '("\\.flow$" . javascript-mode) auto-mode-alist))
+;; Make C mode use 4 spaces instead of 2.
 (setq-default c-basic-offset 4)
 
 ;;;;;;;;;;;;;

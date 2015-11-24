@@ -219,6 +219,19 @@ class attrdict(dict):
     def __getattr__(self, attr):
         return self[attr]
 
+class get(object):
+    """
+    Class such that when an attribute is accessed, like g = get() then
+    "g.a" returns a function that gets attribute "a" from its argument.
+
+    This can be used for cutesy syntax for getting attributes, such as:
+
+    _ = get()
+    map(_.a, [x, y, z]) ---> [x.a, y.a, z.a]
+    """
+    def __getattr__(self, attr):
+        return lambda x: attrgetter(attr)(x)
+
 class SliceMaker(object):
     """
     __getitem__ for this class just returns the "item" (slice) that was
