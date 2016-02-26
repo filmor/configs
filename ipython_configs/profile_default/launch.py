@@ -12,29 +12,40 @@ import time
 import types
 import pandas
 import inspect
-import cPickle
 import unittest
 import operator
 import warnings
 import datetime
 import dateutil
 import calendar
-import copy_reg
 import itertools
 import contextlib
 import collections
 import numpy as np
 import scipy as sp
 import scipy.stats as st
-import scipy.weave as weave
 import multiprocessing as mp
+from dateutil.relativedelta import relativedelta as drr
+
 from IPython.core.magic import (
     Magics,
     register_line_magic,
     register_cell_magic,
     register_line_cell_magic
 )
-from dateutil.relativedelta import relativedelta as drr
+
+
+# Python 3 import checks
+try:
+    import cPickle as pickle
+except:
+    import pickle
+
+try:
+    import copy_reg
+except:
+    import copyreg as copy_reg
+
 
 
 ###########################
@@ -149,14 +160,17 @@ def target_getitem(function_name):
         return klass
     return decorator
 
-def fn_unique(lst, cmp_op=operator.ne):
+def fn_unique(itr, cmp_op=operator.ne):
     """
-    Creates an order-preserving new list from an input list, such that only
-    the unique elements from the original list appear. Optionally can be used
-    with a different comparison operator. Inspired by Haskell's `nub` function.
+    Creates an order-preserving new list from an input iterator, such that only
+    the unique elements from the original appear. Optionally can be used with
+    a different comparison operator. Inspired by Haskell's `nub` function. 
+    This is implemented with recursion, so not useful for large arrays in 
+    Python.
     """
-    f = lambda x: cmp_op(x, lst[0])
-    return [] if lst == [] else lst[0:1] + fn_unique(filter(f, lst[1:]), cmp_op)
+    l = list(itr)
+    f = lambda x: cmp_op(x, l[0])
+    return [] if l == [] else l[0:1] + fn_unique(filter(f, l[1:]), cmp_op)
 
 def fn_get_nth(seq, cond_callable, n=1):
     """
@@ -164,7 +178,14 @@ def fn_get_nth(seq, cond_callable, n=1):
     True, return the n-th. Returns None if StopIteration or other issues cause
     an error in finding the n-th occurrence.
     """
-    islice, ifilter = itertools.islice, itertools.ifilter
+    islice = itertools.islice
+
+    # Due to changes to filter in Python 3.
+    try:
+        ifilter = itertools.ifilter
+    except:
+        ifilter = filter
+
     try:
         return (islice(ifilter(cond_callable, seq), n-1, n).next() if n >= 0
                 else fn_get_nth(reversed(seq), cond_callable, -n))
@@ -329,7 +350,6 @@ class COL(object):
     supported logic operations.
     """
 
-
     def __init__(self, column):
         self.column = column
 
@@ -384,7 +404,7 @@ class Timer(object):
         self.elapsed_time = self.stop - self.start
         if self.verbose:
             print ("Block {} elpased time: {}".format(self.name, 
-                                                     self.elapsed_time))
+                                                      self.elapsed_time))
 
 ###############################
 # Data and instance utilities #
@@ -392,9 +412,14 @@ class Timer(object):
 dfrm = pandas.DataFrame(np.random.rand(10,3),
                         columns=["A", "B", "C"])
 
-tall_dfrm = 'blah' 
+tall_dfrm = pandas.DataFrame(np.random.rand(200,5),
+                             columns=["A", "B", "C", "D", "E"])
+tall_dfrm["F"] = np.random.randint(0, 15, 200)
         
 AND = Infix(lambda x, y: y(x))
 FROM = Infix(lambda x, y: x(y))
 WHERE = Infix(lambda x, y: y(x))
 SELECT = SelectInfix()
+    
+    
+    

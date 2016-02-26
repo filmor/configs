@@ -119,6 +119,7 @@ fi
 
 # Custom aliases
 alias home='clear;'
+alias rct3="wine explorer /desktop=800x600 '/home/ely/.wine/drive_c/Program Files (x86)/Roller Coaster Tycoon 3 Platinum  - CarlesNeo !/RCT3plus.exe'"
 
 # Exports and system path configs
 export EDITOR=emacs
