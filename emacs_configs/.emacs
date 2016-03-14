@@ -8,6 +8,9 @@
     '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
 
+;; Emacs Speaks Statistics
+(require 'ess-site)
+
 ;; Set color theme
 (load-theme 'tango-dark)
 

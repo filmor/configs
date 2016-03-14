@@ -2,16 +2,21 @@
 IPython launch script
 Author: Ely M. Spears
 """
+from __future__ import print_function
 
 import re
 import os
 import abc
+import ast
 import sys
 import mock
 import time
 import types
+import array
 import pandas
 import inspect
+import platform
+import cProfile
 import unittest
 import operator
 import warnings
@@ -21,21 +26,22 @@ import calendar
 import itertools
 import contextlib
 import collections
-import numpy as np
-import scipy as sp
-import scipy.stats as st
-import multiprocessing as mp
+import multiprocessing
+
+import numpy             as np
+import scipy             as sp
+import scipy.stats       as st
+import sqlalchemy.sql    as sql
+import sqlalchemy.schema as schema
+ 
+from sqlalchemy             import create_engine
 from dateutil.relativedelta import relativedelta as drr
+from IPython.core.magic     import (Magics,
+                                    register_line_magic,
+                                    register_cell_magic,
+                                    register_line_cell_magic)
 
-from IPython.core.magic import (
-    Magics,
-    register_line_magic,
-    register_cell_magic,
-    register_line_cell_magic
-)
-
-
-# Python 3 import checks
+# Python 2/3 import safety checks
 try:
     import cPickle as pickle
 except:
@@ -46,6 +52,17 @@ try:
 except:
     import copyreg as copy_reg
 
+# When on local machine, attempt a default database 
+# connection using local configuration.
+if platform.node() == "eschaton":
+    try:
+        with open("/home/ely/.sqlalchemyrc", 'r') as db_file:
+            db_config = ast.literal_eval(db_file.read())
+            db_engine = create_engine(db_config["postgresql"])
+            db_conn   = db_engine.connect()
+    except Exception as e:
+        print("Exception while connecting to local postgres database server:")
+        print(e)
 
 
 ###########################
@@ -409,6 +426,7 @@ class Timer(object):
 ###############################
 # Data and instance utilities #
 ###############################
+arry = np.random.rand(25)
 dfrm = pandas.DataFrame(np.random.rand(10,3),
                         columns=["A", "B", "C"])
 
@@ -416,6 +434,7 @@ tall_dfrm = pandas.DataFrame(np.random.rand(200,5),
                              columns=["A", "B", "C", "D", "E"])
 tall_dfrm["F"] = np.random.randint(0, 15, 200)
         
+# For infix pandas/sql hack.
 AND = Infix(lambda x, y: y(x))
 FROM = Infix(lambda x, y: x(y))
 WHERE = Infix(lambda x, y: y(x))
