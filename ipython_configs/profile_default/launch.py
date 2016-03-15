@@ -60,6 +60,7 @@ if platform.node() == "eschaton":
             db_config = ast.literal_eval(db_file.read())
             db_engine = create_engine(db_config["postgresql"])
             db_conn   = db_engine.connect()
+            db_query  = lambda x: db_conn.execute(x+";").fetchall()
     except Exception as e:
         print("Exception while connecting to local postgres database server:")
         print(e)
