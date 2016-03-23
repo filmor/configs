@@ -268,6 +268,7 @@ class get(object):
     _ = get()
     map(_.a, [x, y, z]) ---> [x.a, y.a, z.a]
     """
+    from operator import attrgetter
     def __getattr__(self, attr):
         return lambda x: attrgetter(attr)(x)
 
