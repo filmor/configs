@@ -35,9 +35,11 @@
 ;;;;;;;;;;;;;
 ;; Aliases ;;
 ;;;;;;;;;;;;;
-(defalias 'yes-or-no-p 'y-or-n-p)
+(defalias 'yes-or-no-p 'y-or-n-p) 
 (defalias 'rb 'revert-buffer)
 (defalias 'qr 'query-replace)
+(defalias 'kr 'kill-rectangle)
+(defalias 'yr 'yank-rectangle)
 
 ;;;;;;;;;;;
 ;; Modes ;;
