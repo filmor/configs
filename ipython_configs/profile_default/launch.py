@@ -91,6 +91,28 @@ def _unpickle_method(func_name, obj, cls):
 
 copy_reg.pickle(types.MethodType, _pickle_method, _unpickle_method)
 
+# Helper context manager to modify PYTHONPATH to include a parent directory, 
+# then revert PYTHONPATH back, so that parent directory relative imports will
+# work inside a with-statement, e.g. `with enable_parent_import():` Note that
+# this doesn't work in an IPython session, because the current frame is based
+# on IPython-maintained session files, and not the working directory.
+@contextlib.contextmanager
+def enable_parent_import():
+    """
+    Temporarily modify PYTHONPATH to search the parent directory for imports.
+    """
+    path_appended = False
+    try:
+        current_file      = inspect.getfile(inspect.currentframe())
+        current_directory = os.path.dirname(os.path.abspath(current_file))
+        parent_directory  = os.path.dirname(current_directory)
+        sys.path.insert(0, parent_directory) 
+        path_appended = True
+        yield
+    finally:
+        if path_appended:
+            sys.path.pop(0)
+
 #############
 # Utilities #
 #############
